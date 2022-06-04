@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ShipGen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="derelict.css">
+  </head>
+  <body>
+    <div id="info" class="noclick">
+      <h1>SHIP: Loading...</h1>
+      registration: <br/>
+      life signs: <br/>
+    </div>
+    <div id="bottom">
+    </div>
+    <div id="scanlines" class="piece noclick scanlines"></div>
+    <div id="glow" class="piece noclick glow"></div>
+    <script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.skypack.dev/three@0.133.1/build/three.module.js"
+    }
+}
+</script>
+    <script src="derelict.js" type="module"></script>
+  </body>
+</html>
