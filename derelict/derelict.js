@@ -37,7 +37,8 @@ function makeTile(mod) {
 
   // context.font = "30px Arial";
   context.font = "30px VT323";
-  context.fillStyle = '#FFFFFF';
+  // context.fillStyle = '#FFFFFF';
+  context.fillStyle = mod.color;
   function MakeText(text, x1, y1, x2, y2) {
     let g1 = context.measureText(text);
     let actualHeight = g1.actualBoundingBoxAscent + g1.actualBoundingBoxDescent;
@@ -45,8 +46,9 @@ function makeTile(mod) {
     context.fillText(text, 0, 0);
   }
 
-  MakeText(mod.type, 12, 12, 1012, 600);
-  MakeText(mod.flavor, 12, 624, 1012, 1012);
+  const m = 150;  // margin
+  MakeText(mod.type, m, m, 1023-m, 1023-m);
+  // MakeText(mod.flavor, 12, 624, 1012, 1012);
 
   var texture = new THREE.Texture(canvas); // now make texture
   texture.minFilter = THREE.LinearFilter;     // eliminate console message
