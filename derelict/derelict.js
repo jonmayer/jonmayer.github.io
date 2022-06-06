@@ -16,8 +16,8 @@ let controls;
 let ship;
 const pointer = new THREE.Vector2();
 let INTERSECTED;
-let info = false;
-let info_text = [];
+let info = true;
+let info_text = "unidentified derelict ship";
 let info_pos = 0;
 let color_destroyed = 0x991111;
 let line_material;
@@ -32,12 +32,12 @@ function makeTile(mod) {
   canvas.width = 1024;
   canvas.height = 1024;
   let context = canvas.getContext('2d');
-  context.fillStyle = '#FFFFFF';
+  context.fillStyle = 'rgba(0, 0, 0, 0)'
   context.fillRect(0, 0, 1024, 1024);
 
   // context.font = "30px Arial";
   context.font = "30px VT323";
-  context.fillStyle = '#000000';
+  context.fillStyle = '#FFFFFF';
   function MakeText(text, x1, y1, x2, y2) {
     let g1 = context.measureText(text);
     let actualHeight = g1.actualBoundingBoxAscent + g1.actualBoundingBoxDescent;
@@ -55,7 +55,7 @@ function makeTile(mod) {
 
   var geo = new THREE.PlaneGeometry(1, 1);
   var material = new THREE.MeshBasicMaterial( 
-        { side:THREE.DoubleSide, map:texture, transparent:false, opacity:1.0 } );
+        { side:THREE.DoubleSide, map:texture, transparent:true, opacity:1.0 } );
   var mesh = new THREE.Mesh(geo, material);
   mesh.part_index = mod.index;
   return mesh;
@@ -81,17 +81,22 @@ function animateText() {
   }
 }
 
-function init() {
-  ship = makeShip(window.location.search);
+function scan() {
   info = document.getElementById("info");
   info_text = ship.InfoText().join("   \n");
   info_pos = 0;
+}
+
+
+function init() {
+  ship = makeShip(window.location.search);
   let bottom = document.getElementById("bottom");
   bottom.innerHTML = "<p>\n" +
     "<a>[ BOARD ]</a> " +
-    "<a>[ SCAN ]</a> " + 
+    "<a id=\"btn_scan\">[ SCAN ]</a> " + 
     "<a href=\"?" + ship.rand().toString(16) + "\">[ NOPE ]</a>\n" +
     "</p>\n";
+  document.getElementById ("btn_scan").addEventListener ("click", scan, false);
 
   scene = new THREE.Scene();
   // const axesHelper = new THREE.AxesHelper( 2 );
