@@ -52,14 +52,14 @@ const ship_jumpdrive =
 // ship modules are organized by broad category, with some
 // flavortext detail to be picked with them.
 const ship_modules = [
-  ["COM",
+  ["CMD",
     ["bridge", "navigation", "comms", "cockpit", "destroyed"],
     "rgba(241, 245, 39, 0.7)"],
   ["LIFE",
     ["functional", "nominal", "failing", "failing", "disabled", "disabled",
       "inoperative", "inoperative", "inoperative", "inoperative"],
     "rgba(126, 246, 86, 0.7)"],
-  ["DAT",
+  ["CORE",
     ["AI core", "brainscans", "sector map", "logs", "media"],
     "rgba(86, 183, 246, 0.7)"],
   ["DEF",
